@@ -1,0 +1,213 @@
+﻿<Window x:Class="CyberShieldBot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CyberShield ChatBot"
+        Height="720"
+        Width="1200"
+        WindowStartupLocation="CenterScreen"
+        Background="#0B141A"
+        ResizeMode="CanResize">
+    <Window.Resources>
+
+        <!-- WhatsApp Inspired Colors -->
+        <SolidColorBrush x:Key="PrimaryDark" Color="#111B21"/>
+        <SolidColorBrush x:Key="SecondaryDark" Color="#202C33"/>
+        <SolidColorBrush x:Key="AccentGreen" Color="#00A884"/>
+        <SolidColorBrush x:Key="MessageGreen" Color="#005C4B"/>
+        <SolidColorBrush x:Key="BotGray" Color="#202C33"/>
+        <SolidColorBrush x:Key="TextWhite" Color="#E9EDEF"/>
+
+        <!-- Button Style -->
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="{StaticResource AccentGreen}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="14,8"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- TextBox Style -->
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#2A3942"/>
+            <Setter Property="BorderBrush" Value="#2A3942"/>
+            <Setter Property="Padding" Value="12"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- LEFT SIDEBAR -->
+        <Border Background="{StaticResource PrimaryDark}"
+                Grid.Column="0">
+
+            <StackPanel>
+
+                <!-- Header -->
+                <Border Background="{StaticResource SecondaryDark}"
+                        Padding="20">
+                    <TextBlock Text="🛡 CyberShield AI"
+                               Foreground="White"
+                               FontSize="24"
+                               FontWeight="Bold"/>
+                </Border>
+                <!-- ASCII ART -->
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+                    <TextBlock x:Name="AsciiArtBlock"
+                               Foreground="#00FF9C"
+                               FontFamily="Consolas"
+                               FontSize="12"
+                               Margin="15"
+                               TextWrapping="Wrap">
+  ______     ______     ______     ______
+ /\  ___\   /\  ___\   /\  == \   /\  ___\
+ \ \ \____  \ \___  \  \ \  __\ \___  \
+  \ \_____\  \/\_____\  \ \_____\  \/\_____\
+   \/_____/   \/_____/   \/_____/   \/_____/
+
+   CYBER SECURITY AI DEFENSE SYSTEM
+                    </TextBlock>
+                         </ScrollViewer>
+
+                <!-- Features -->
+                <StackPanel Margin="15">
+
+                    <TextBlock Text="✔ Keyword Recognition"
+                               Foreground="White"
+                               Margin="0,5"/>
+
+                    <TextBlock Text="✔ Sentiment Detection"
+                               Foreground="White"
+                               Margin="0,5"/>
+
+                    <TextBlock Text="✔ Memory Recall"
+                               Foreground="White"
+                               Margin="0,5"/>
+                     <TextBlock Text="✔ Random AI Responses"
+                               Foreground="White"
+                               Margin="0,5"/>
+
+                    <TextBlock Text="✔ Conversation Flow"
+                               Foreground="White"
+                               Margin="0,5"/>
+
+                    <TextBlock Text="✔ Error Handling"
+                               Foreground="White"
+                               Margin="0,5"/>
+
+                </StackPanel>
+                     </StackPanel>
+
+        </Border>
+
+        <!-- CHAT AREA -->
+        <Grid Grid.Column="1"
+              Background="#0B141A">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+            <!-- TOP BAR -->
+            <Border Background="{StaticResource SecondaryDark}"
+                    Grid.Row="0">
+
+                <DockPanel Margin="20,10">
+
+                    <Ellipse Width="45"
+                             Height="45"
+                             Fill="{StaticResource AccentGreen}"
+                             DockPanel.Dock="Left"/>
+
+                    <StackPanel Margin="15,0">
+
+                        <TextBlock Text="CyberShield Assistant"
+                                   Foreground="White"
+                                   FontWeight="Bold"
+                                   FontSize="18"/>
+                        <TextBlock Text="Online"
+                                   Foreground="#8AA29E"
+                                   FontSize="12"/>
+
+                    </StackPanel>
+                    <!-- Right Side Image -->
+                    <Image Source="/cyber 1.jpg"
+               Width="90"
+               Height="60"
+               HorizontalAlignment="Right"
+               Stretch="Uniform"
+               Margin="20,0,0,0"/>
+
+                </DockPanel>
+
+            </Border>
+            <!-- CHAT DISPLAY -->
+            <Border Grid.Row="1"
+                    Margin="10"
+                    CornerRadius="15"
+                    Background="#111B21">
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+                    <TextBox x:Name="ChatDisplay"
+                             IsReadOnly="True"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Foreground="White"
+                             FontSize="15"
+                             TextWrapping="Wrap"
+                             FontFamily="Segoe UI"
+                             VerticalScrollBarVisibility="Auto"/>
+
+                </ScrollViewer>
+            </Border>
+
+            <!-- INPUT AREA -->
+            <Border Grid.Row="2"
+                    Background="{StaticResource SecondaryDark}">
+
+                <Grid Margin="10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="120"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox x:Name="UserInput"
+                             Grid.Column="0"
+                             Height="45"
+                             VerticalContentAlignment="Center"
+                             KeyDown="UserInput_KeyDown"/>
+                    <Button Grid.Column="1"
+                            Content="Send"
+                            Height="45"
+                            Click="SendButton_Click"/>
+
+                </Grid>
+
+            </Border>
+
+        </Grid>
+
+    </Grid>
+</Window>
